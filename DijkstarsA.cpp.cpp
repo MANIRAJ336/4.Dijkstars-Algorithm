@@ -18,15 +18,18 @@ int smallestDistance(int distance[], bool shortPathSet[])
 }
 
 
-void printSolution(int distance[], int n)
+void printSolution(int distance[], int n, int destination)
 {
-	printf("Distance from source given\n");
-	for (int i = 0; i < X; i++)
-		printf("\t%d \t\t\t\t %d\n", i, distance[i]);
+	printf("Distance from source given to all vertices \n");
+	for (int i = 0; i < X; i++){
+	    		printf("\t%d \t\t\t\t %d\n", i, distance[i]);
+	}
+		printf("Distance from source  vertex 0  to destination vertex 4\n");
+		printf("\t\t\t\t %d\n",distance[destination]);
 }
 
 //dijkstraAlgorithm implementation
-void dijkstraAlgorithm(int graph[X][X], int source)
+void dijkstraAlgorithm(int graph[X][X], int source, int destination)
 {
 	int distance[X];// This is the result array where the distance from source to index in the distance array.
 //      	As the length is the total no of vertices. each of the index is a vertex.
@@ -65,7 +68,7 @@ void dijkstraAlgorithm(int graph[X][X], int source)
 	}
 
 	// print the distance array as its the result of distances where index is the vertex and value is the distance
-	printSolution(distance, X);
+	printSolution(distance, X, destination);
 }
 
 int main()
@@ -80,7 +83,8 @@ int main()
 						{ 8, 11, 0, 0, 0, 0, 1, 0, 7 },
 						{ 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
 
-	dijkstraAlgorithm(graph, 0);
+    //find the shourtest path with lowest cost for starting index 0 and ending index 4
+	dijkstraAlgorithm(graph, 0, 4);
 
 	return 0;
 }
